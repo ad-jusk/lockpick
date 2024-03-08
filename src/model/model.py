@@ -7,5 +7,5 @@ class Model:
             cls.instance = super(Model, cls).__new__(cls)
         return cls.instance
     
-    def test(self):
+    def test(self) -> None:
         LOGGER.info('Hello from model!')
