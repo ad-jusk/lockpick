@@ -1,4 +1,4 @@
-from base import BaseEntity
+from .base import BaseEntity
 
 # REPRESENTS ACCOUNT WHOSE DATA USER WANTS TO SAVE
 class Account(BaseEntity):
