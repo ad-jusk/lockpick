@@ -1,10 +1,11 @@
 from kivy.uix.screenmanager import Screen
 
-from ..model.model_data import ModelData
-from ..controller.controller import Controller
+from src.model.model_data import ModelData
+from src.controller.controller import Controller
+
 
 class HomeScreen(Screen):
-    
+
     def __init__(self, model: ModelData, controller: Controller, **kwargs):
         super().__init__(**kwargs)
         self.model = model
