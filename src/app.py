@@ -1,10 +1,17 @@
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
+from kivy.core.window import Window
 
 from src.view.login import LoginScreen
 from src.view.home import HomeScreen
 from src.model.model import Model
 from src.controller.controller import Controller
+
+ASPECT_RATIO = 20 / 9
+WINDOW_WIDTH = 300
+WINDOW_HEIGHT = int(WINDOW_WIDTH * ASPECT_RATIO)
+
+Window.size = (WINDOW_WIDTH, WINDOW_HEIGHT)
 
 
 class LockpickApp(App):

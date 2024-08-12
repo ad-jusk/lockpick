@@ -6,10 +6,10 @@ from src.controller.controller import Controller
 
 class LoginScreen(Screen):
 
-    def __init__(self, model: ModelData, controller: Controller, **kwargs):
+    def __init__(self, model: ModelData, controller: Controller, **kwargs: str) -> None:
         super().__init__(**kwargs)
         self.model = model
         self.controller = controller
 
-    def test(self):
+    def test(self) -> None:
         self.controller.add_user("a", "b")

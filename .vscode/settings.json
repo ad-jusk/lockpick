@@ -1,10 +1,12 @@
 {
     "files.exclude": {
         "**/__pycache__": true,
-        "**/.mypy_cache": true
+        "**/.mypy_cache": true,
+        "**/__init__.py": true
     },
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true,
+        "files.autoSave": "onFocusChange"
     }
 }
