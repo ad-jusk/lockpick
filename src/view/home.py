@@ -10,6 +10,3 @@ class HomeScreen(Screen):
         super().__init__(**kwargs)
         self.model = model
         self.controller = controller
-
-    def test(self) -> None:
-        self.controller.add_user("a", "b")

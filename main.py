@@ -1,4 +1,5 @@
 from os import environ
+import pathlib
 
 environ["KIVY_LOG_MODE"] = "MIXED"
 
@@ -9,10 +10,8 @@ from src.app import LockpickApp
 
 
 def load_design_files() -> None:
-
-    design_directory: str = "./src/design"
-    Builder.load_file(design_directory + "/login.kv")
-    Builder.load_file(design_directory + "/home.kv")
+    for kv_file in pathlib.Path("./src/design").rglob("*.kv"):
+        Builder.load_file(str(kv_file))
 
 
 if __name__ == "__main__":
