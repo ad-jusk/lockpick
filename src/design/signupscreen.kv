@@ -1,4 +1,4 @@
-<LoginScreen>:
+<SignupScreen>:
 
     AnchorLayout:
         anchor_y: 'top'
@@ -21,7 +21,19 @@
 
             Widget:
                 size_hint_y: None
-                height: dp(20)    
+                height: dp(20)   
+
+            TextInput:
+                size_hint: 1, None
+                hint_text: 'Name'
+                height: dp(40)
+                multiline: False
+
+            TextInput:
+                size_hint: 1, None
+                hint_text: 'Surname'
+                height: dp(40)
+                multiline: False 
             
             TextInput:
                 size_hint: 1, None
@@ -39,4 +51,4 @@
                 size_hint: None, None
                 height: dp(50)
                 pos_hint: {'center_x': .5,'center_y': .5}
-                text: 'Log in!'
+                text: 'Sign up!'

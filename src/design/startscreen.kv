@@ -6,7 +6,7 @@
         BoxLayout:
             orientation: 'vertical'
             size_hint: .9, .7
-            spacing: 10
+            spacing: 15
 
             BoxLayout:
                 size_hint: None, .5
@@ -26,7 +26,7 @@
                     source: './res/img/logo.png'
                     allow_stretch: False
 
-            Button:
+            RoundedButton:
                 size_hint: None, .075
                 pos_hint: {'center_x': .5, 'center_y': .5}
                 text: 'Log in'
@@ -45,7 +45,9 @@
                     text: 'New to Lockpick?'
 
                 Label:
-                    text: 'Sign up!'
+                    text: '[ref=signup]Sign up[/ref]!'
                     size_hint: None, None
                     size: self.texture_size
                     color: (0, .3, .7, 1)
+                    markup: True
+                    on_ref_press: root.manager.current = 'signup'

@@ -4,7 +4,7 @@ from src.model.model_data import ModelData
 from src.controller.controller import Controller
 
 
-class HomeScreen(Screen):
+class SignupScreen(Screen):
 
     def __init__(self, model: ModelData, controller: Controller, **kwargs: str) -> None:
         super().__init__(**kwargs)

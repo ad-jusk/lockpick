@@ -2,10 +2,3 @@
     background_color: (0, 0, 0, 0)
     background_normal: ''
     font_name: './res/fonts/Geologica-Regular.ttf'
-    canvas.before:
-        Color:
-            rgba: (.8, .1, .1, 1) if self.state == 'normal' else (.9, .2, .2, 1)
-        RoundedRectangle:
-            size: self.size
-            pos: self.pos
-            radius: [20]
