@@ -3,6 +3,7 @@ __pycache__/
 .mypy_cache/
 build/
 bin/
+.buildozer/
 
 venv/
 database/
