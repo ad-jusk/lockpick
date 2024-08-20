@@ -2,11 +2,11 @@
 
     AnchorLayout:
         anchor_y: 'top'
-        padding: [0, 50]
+        padding: [0, dp(50)]
 
         BoxLayout:
             orientation: 'vertical'
-            spacing: 25
+            spacing: dp(30)
             size_hint: .8, None
             pos_hint: {'center_x': .5, 'center_y': .5}
             height: self.minimum_height
@@ -21,7 +21,7 @@
 
             Widget:
                 size_hint_y: None
-                height: dp(20)    
+                height: dp(30)    
             
             TextInput:
                 size_hint: 1, None
@@ -36,7 +36,7 @@
                 multiline: False
 
             RoundedButton:
-                size_hint: None, None
+                size_hint: .7, None
                 height: dp(50)
                 pos_hint: {'center_x': .5,'center_y': .5}
                 text: 'Log in!'

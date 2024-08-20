@@ -6,7 +6,7 @@
         BoxLayout:
             orientation: 'vertical'
             size_hint: .9, .7
-            spacing: 15
+            spacing: dp(30)
 
             BoxLayout:
                 size_hint: None, .5
@@ -27,12 +27,14 @@
                     allow_stretch: False
 
             RoundedButton:
-                size_hint: None, .075
+                size_hint: None, .07
+                width: signup_container.width
                 pos_hint: {'center_x': .5, 'center_y': .5}
                 text: 'Log in'
                 on_press: root.manager.current = 'login'
 
             BoxLayout:
+                id: signup_container
                 size_hint: None, None
                 pos_hint: {'center_x': .5, 'center_y': .5}
                 height: self.minimum_height
