@@ -2,7 +2,7 @@
 
     AnchorLayout:
         anchor_y: 'top'
-        padding: [0, dp(50)]
+        padding: [0, dp(55)]
 
         BoxLayout:
             orientation: 'vertical'
@@ -52,3 +52,4 @@
                 height: dp(50)
                 pos_hint: {'center_x': .5,'center_y': .5}
                 text: 'Sign up!'
+                on_press: root.add_toast()
