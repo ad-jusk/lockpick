@@ -24,24 +24,28 @@
                 height: dp(30)   
 
             TextInput:
+                id: name_input
                 size_hint: 1, None
                 hint_text: 'Name'
                 height: dp(40)
                 multiline: False
 
             TextInput:
+                id: surname_input
                 size_hint: 1, None
                 hint_text: 'Surname'
                 height: dp(40)
                 multiline: False 
             
             TextInput:
+                id: username_input
                 size_hint: 1, None
                 hint_text: 'Username'
                 height: dp(40)
                 multiline: False 
 
             TextInput:
+                id: password_input
                 size_hint: 1, None
                 hint_text: 'Password'
                 height: dp(40)
@@ -52,4 +56,4 @@
                 height: dp(50)
                 pos_hint: {'center_x': .5,'center_y': .5}
                 text: 'Sign up!'
-                on_press: root.add_toast()
+                on_press: root.signup()

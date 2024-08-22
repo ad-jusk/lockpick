@@ -26,19 +26,13 @@ class _ToastLabel(Label):
 
         with self.canvas.before:
             Color(*bg_color)
-            self.color
             self.rect = RoundedRectangle(size=self.size, pos=self.pos, radius=[dp(10)])
-            self.border_rect = RoundedRectangle(
-                size=self.size, pos=self.pos, radius=[dp(10)], line_width=dp(2)
-            )
 
         self.bind(pos=self.update_rect, size=self.update_rect)
 
     def update_rect(self, *args: str) -> None:
         self.rect.size = self.size
         self.rect.pos = self.pos
-        self.border_rect.size = self.size
-        self.border_rect.pos = self.pos
 
 
 class ToastNotification(FloatLayout):
@@ -63,13 +57,13 @@ class ToastNotification(FloatLayout):
         anim = Animation(opacity=1, duration=0.5)
         anim.start(toast)
 
-        Clock.schedule_once(lambda dt: self.remove_toast(toast), duration)
+        Clock.schedule_once(lambda dt: self._remove_toast(toast), duration)
 
-    def remove_toast(self, toast: _ToastLabel) -> None:
+    def _remove_toast(self, toast: _ToastLabel) -> None:
         anim = Animation(opacity=0, duration=0.5)
-        anim.bind(on_complete=lambda *args: self.finish_removal(toast))
+        anim.bind(on_complete=lambda *args: self._finish_removal(toast))
         anim.start(toast)
 
-    def finish_removal(self, toast: _ToastLabel) -> None:
+    def _finish_removal(self, toast: _ToastLabel) -> None:
         self.toast_container.remove_widget(toast)
         self.toast_container.height -= toast.height + self.toast_container.spacing
