@@ -10,7 +10,7 @@ class Controller:
         self.model = model
         self._executor = LockpickExecutor()
 
-    def add_user(
+    def signup(
         self, name: str, surname: str, username: str, password: str
     ) -> Future[None]:
         callable: Callable[[], None] = lambda: self.model.signup(

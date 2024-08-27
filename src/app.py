@@ -4,9 +4,7 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
 
-from src.view.login import LoginScreen
-from src.view.signup import SignupScreen
-from src.view.start import StartScreen
+from src.screens import LockpickScreenManager
 from src.model.model import Model
 from src.controller.controller import Controller
 
@@ -36,10 +34,6 @@ class LockpickApp(App):
 
         model = Model()
         controller = Controller(model)
-
-        screen_manager = ScreenManager()
-        screen_manager.add_widget(StartScreen(name="start"))
-        screen_manager.add_widget(LoginScreen(model, controller, name="login"))
-        screen_manager.add_widget(SignupScreen(model, controller, name="signup"))
+        screen_manager = LockpickScreenManager(model, controller)
 
         return screen_manager

@@ -1,9 +1,12 @@
 import logging
 
+
 def _configure_logger() -> logging.Logger:
 
     handler: logging.Handler = logging.StreamHandler()
-    format: logging.Formatter = logging.Formatter(f'[ %(levelname)s ] [ %(asctime)s ] %(msg)s')
+    format: logging.Formatter = logging.Formatter(
+        f"[ %(levelname)s ] [ %(asctime)s ] %(msg)s"
+    )
     handler.setFormatter(format)
 
     logger: logging.Logger = logging.getLogger(__name__)
@@ -11,6 +14,7 @@ def _configure_logger() -> logging.Logger:
     logger.setLevel(logging.INFO)
 
     return logger
+
 
 class LOGGER:
 
@@ -21,16 +25,18 @@ class LOGGER:
     def info(cls, message: str) -> None:
         if cls._DEBUG:
             cls._LOGGER.info(message)
-    
+
     @classmethod
     def warn(cls, message: str) -> None:
         if cls._DEBUG:
             cls._LOGGER.warning(message)
 
     @classmethod
-    def error(cls, message: str) -> None:
+    def exception(cls, message: str) -> None:
         if cls._DEBUG:
             cls._LOGGER.error(message)
-        
 
-
+    @classmethod
+    def exception(cls, exception: Exception) -> None:
+        if cls._DEBUG:
+            cls._LOGGER.exception(exception)
