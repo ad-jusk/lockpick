@@ -2,7 +2,7 @@ from kivy.uix.screenmanager import Screen
 
 from src.model.model_data import ModelData
 from src.controller.controller import Controller
-from src.view.utils.toast import ToastLevel, ToastNotification
+from src.view.utils.overlay import Overlay
 
 
 class LoginScreen(Screen):
@@ -12,8 +12,5 @@ class LoginScreen(Screen):
         self.model = model
         self.controller = controller
 
-        self.toast = ToastNotification()
-        self.add_widget(self.toast)
-
-    def add_toast(self) -> None:
-        self.toast.add_toast("Login error", ToastLevel.ERROR)
+        self.overlay = Overlay()
+        self.add_widget(self.overlay)

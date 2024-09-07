@@ -1,0 +1,15 @@
+<LoadingIcon@Image>:
+
+    canvas.before:
+        PushMatrix
+        Rotate:
+            angle: root.angle
+            axis: 0, 0, -1
+            origin: root.center
+    canvas.after:
+        PopMatrix
+
+    size_hint: None, None
+    size: dp(100), dp(100)
+    source: 'res/img/spinner_blue.png'
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}

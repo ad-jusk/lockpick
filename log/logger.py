@@ -32,7 +32,7 @@ class LOGGER:
             cls._LOGGER.warning(message)
 
     @classmethod
-    def exception(cls, message: str) -> None:
+    def error(cls, message: str) -> None:
         if cls._DEBUG:
             cls._LOGGER.error(message)
 

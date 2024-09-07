@@ -8,6 +8,8 @@ from kivy.metrics import dp
 
 from enum import Enum
 
+from src.view.utils.loading import LoadingIcon
+
 
 class ToastLevel(Enum):
     INFO: tuple = (0.12, 0.57, 0.31, 1)
@@ -15,7 +17,7 @@ class ToastLevel(Enum):
     ERROR: tuple = (0.85, 0.21, 0.21, 1)
 
 
-class _ToastLabel(Label):
+class ToastLabel(Label):
 
     def __init__(self, bg_color: tuple, **kwargs: str) -> None:
         super().__init__(**kwargs)
@@ -35,7 +37,7 @@ class _ToastLabel(Label):
         self.rect.pos = self.pos
 
 
-class ToastNotification(FloatLayout):
+class Overlay(FloatLayout):
 
     def __init__(self, **kwargs: str) -> None:
         super().__init__(**kwargs)
@@ -50,20 +52,34 @@ class ToastNotification(FloatLayout):
         self.add_widget(self.toast_container)
 
     def add_toast(self, message: str, level: ToastLevel, duration: float = 2) -> None:
-        toast = _ToastLabel(level.value, text=message)
+        toast = ToastLabel(level.value, text=message)
         self.toast_container.add_widget(toast)
         self.toast_container.height += toast.height + self.toast_container.spacing
 
         anim = Animation(opacity=1, duration=0.5)
         anim.start(toast)
 
-        Clock.schedule_once(lambda dt: self._remove_toast(toast), duration)
+        Clock.schedule_once(lambda dt: self.__remove_toast(toast), duration)
 
-    def _remove_toast(self, toast: _ToastLabel) -> None:
+    def __remove_toast(self, toast: ToastLabel) -> None:
         anim = Animation(opacity=0, duration=0.5)
-        anim.bind(on_complete=lambda *args: self._finish_removal(toast))
+        anim.bind(on_complete=lambda *args: self.__finish_removal(toast))
         anim.start(toast)
 
-    def _finish_removal(self, toast: _ToastLabel) -> None:
+    def __finish_removal(self, toast: ToastLabel) -> None:
         self.toast_container.remove_widget(toast)
         self.toast_container.height -= toast.height + self.toast_container.spacing
+
+    def start_loading(self) -> None:
+        if "loading" in self.ids:
+            return
+        loading = LoadingIcon()
+        self.ids["loading"] = loading
+        self.add_widget(loading)
+        if self.parent:
+            self.parent.disabled = True
+
+    def stop_loading(self) -> None:
+        self.remove_widget(self.ids["loading"])
+        if self.parent:
+            self.parent.disabled = False
