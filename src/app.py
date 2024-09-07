@@ -4,6 +4,7 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
 
+from src.database.database import Database
 from src.screens import LockpickScreenManager
 from src.model.model import Model
 from src.controller.controller import Controller
@@ -31,8 +32,8 @@ class LockpickApp(App):
     load_design_files()
 
     def build(self) -> ScreenManager:
-
-        model = Model()
+        database = Database("db/dev.db")
+        model = Model(database)
         controller = Controller(model)
         screen_manager = LockpickScreenManager(model, controller)
 

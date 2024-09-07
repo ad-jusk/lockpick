@@ -4,8 +4,6 @@ __pycache__/
 build/
 bin/
 .buildozer/
-
 venv/
-database/
 
 *.py[cod]
